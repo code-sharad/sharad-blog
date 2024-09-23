@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+      --background: 253 44% 98%;
+      --foreground: 253 58% 0%;
+      --muted: 253 7% 87%;
+      --muted-foreground: 253 13% 37%;
+      --popover: 253 44% 98%;
+      --popover-foreground: 253 58% 0%;
+      --card: 253 44% 97%;
+      --card-foreground: 0 0% 0%;
+      --border: 220 13% 91%;
+      --input: 220 13% 91%;
+      --primary: 253 91% 58%;
+      --primary-foreground: 253 91% 98%;
+      --secondary: 253 5% 89%;
+      --secondary-foreground: 253 5% 29%;
+      --accent: 253 12% 82%;
+      --accent-foreground: 253 12% 22%;
+      --destructive: 339.2 90.36% 51.18%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 253 91% 58%;
+      --radius: 0.5rem;
+    }
+  
+    .dark {
+      --background: 253 43% 3%;
+      --foreground: 253 31% 98%;
+      --muted: 253 7% 13%;
+      --muted-foreground: 253 13% 63%;
+      --popover: 253 43% 3%;
+      --popover-foreground: 253 31% 98%;
+      --card: 253 43% 4%;
+      --card-foreground: 253 31% 99%;
+      --border: 215 27.9% 16.9%;
+      --input: 215 27.9% 16.9%;
+      --primary: 253 91% 58%;
+      --primary-foreground: 253 91% 98%;
+      --secondary: 253 7% 9%;
+      --secondary-foreground: 253 7% 69%;
+      --accent: 253 13% 14%;
+      --accent-foreground: 253 13% 74%;
+      --destructive: 339.2 90.36% 51.18%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 253 91% 58%;
+    }
+  }
+  
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+
+  p {
+    @apply leading-7 [&:not(:first-child)]:mt-6;
+  }
+
+  .link {
+    @apply text-primary hover:text-primary/90;
+  }
+}
+
+.nav-link {
+  @apply rounded-md px-6 py-2 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none;
+}
+
+/* Post styles */
+
+.prose .anchor {
+  @apply absolute invisible no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply border border-neutral-800;
+}
+
+.prose code {
+  @apply text-neutral-800 dark:text-neutral-200 px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
+}
+
+.prose pre code {
+  @apply text-neutral-800 dark:text-neutral-200;
+  border: initial;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply text-neutral-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.prose .tweet a {
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+
+.prose .callout > p {
+  margin: 0 !important;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+[data-rehype-pretty-code-fragment] .line {
+  @apply py-1;
+}
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-slate-500 bg-opacity-10;
+}
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+}
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none border-t-0;
+}
