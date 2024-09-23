@@ -8,16 +8,15 @@ import Link from 'next/link'
 import './global.css'
 
 const meta = {
-  title: 'Hunter Chang - Website',
+  title: 'Sharad Bhadait - Website',
   description:
-    'Sleep deprived father. FE Engineer in China. Lover of Ramen and Kpop',
-  image: `${WEBSITE_HOST_URL}/og-preview.jpg`,
+    'Full Stack Enginner',
 }
 
 export const metadata: Metadata = {
   title: {
     default: meta.title,
-    template: '%s | Hunter Chang',
+    template: '%s | sharad bhadait',
   },
   description: meta.description,
   openGraph: {
@@ -27,16 +26,11 @@ export const metadata: Metadata = {
     siteName: meta.title,
     locale: 'en-US',
     type: 'website',
-    images: [
-      {
-        url: meta.image,
-      },
-    ],
+   
   },
   twitter: {
     title: meta.title,
     description: meta.description,
-    images: meta.image,
     card: 'summary_large_image',
   },
   alternates: {
